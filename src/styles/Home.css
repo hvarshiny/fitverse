@@ -1,0 +1,86 @@
+.home-page{
+  margin-left: 230px;
+}
+
+.home-container{
+  height: calc(100vh - 80px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+    url("https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg");
+
+  background-size: cover;
+
+  background-position: center top;
+
+  background-repeat: no-repeat;
+}
+
+.home-content{
+  max-width: 750px;
+
+  padding: 20px 40px;
+
+  width: 100%
+}
+
+.home-content h1{
+  font-size: 64px;
+
+  font-weight: 800;
+
+  line-height: 1.15;
+
+  margin-bottom: 18px;
+
+  text-transform: uppercase;
+}
+
+.highlight{
+  color: #00ff88;
+}
+
+.home-content p{
+  font-size: 14px;
+
+  color: #d0d0d0;
+
+  line-height: 1.7;
+
+  margin-bottom: 30px;
+
+  letter-spacing: 0.4px;
+}
+
+.home-btn{
+  padding: 15px 38px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background-color: red;
+
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.home-btn:hover{
+  background-color: #00ff88;
+
+  color: black;
+
+  transform: translateY(-3px);
+}

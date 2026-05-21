@@ -1,0 +1,31 @@
+.about-container{
+  max-width: 850px;
+
+  margin: auto;
+
+  background-color: #111;
+
+  padding: 40px;
+
+  border-radius: 15px;
+
+  border: 1px solid #222;
+}
+
+.about-container h1{
+  font-size: 48px;
+
+  color: #00ff88;
+
+  margin-bottom: 25px;
+}
+
+.about-container p{
+  color: #d0d0d0;
+
+  line-height: 1.9;
+
+  margin-bottom: 20px;
+
+  font-size: 16px;
+}
