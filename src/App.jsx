@@ -10,6 +10,7 @@ import BMICalculator from "./pages/BMICalculator"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Login from "./pages/Login"
+import WorkoutSession from "./pages/WorkoutSession"
 import ProgramDetails from "./pages/ProgramDetails"
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <Route path="/program/:id" element={<ProgramDetails />}/>
 
         <Route path="/sessions" element={<QuickSessions />} />
+
+        <Route path="/workout/:id" element={<WorkoutSession />}/>
 
         <Route path="/bmi" element={<BMICalculator />} />
 

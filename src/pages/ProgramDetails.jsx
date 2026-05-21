@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom"
 
-import { useState } from "react"
-
 import programs from "../data/programsData"
 
 import "../styles/ProgramDetails.css"
@@ -10,14 +8,12 @@ function ProgramDetails() {
 
   const { id } = useParams()
 
-  const [completed, setCompleted] = useState(false)
-
   const program = programs.find(
     (item) => item.id === Number(id)
   )
 
-  const handleComplete = () => {
-    setCompleted(true)
+  if (!program) {
+    return <h1>Program Not Found</h1>
   }
 
   return (
@@ -39,10 +35,10 @@ function ProgramDetails() {
 
         <div className="info">
 
-          <h3>Duration:</h3>
+          <h3>Duration</h3>
           <p>{program.duration}</p>
 
-          <h3>Difficulty:</h3>
+          <h3>Difficulty</h3>
           <p>{program.difficulty}</p>
 
         </div>
@@ -54,27 +50,16 @@ function ProgramDetails() {
           <ul>
 
             {program.exercises.map((exercise, index) => (
+
               <li key={index}>
                 {exercise}
               </li>
+
             ))}
 
           </ul>
 
         </div>
-
-        <button
-          className="complete-btn"
-          onClick={handleComplete}
-        >
-          Mark as Completed
-        </button>
-
-        {completed && (
-          <p className="success-message">
-            Workout Completed Successfully ✅
-          </p>
-        )}
 
       </div>
 

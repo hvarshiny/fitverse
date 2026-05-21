@@ -10,7 +10,7 @@ function SessionCard({ id, title, duration, image }) {
 
       <h2>{title}</h2>
 
-      <p>{duration} Seconds</p>
+      <p>{duration} Seconds Per Exercise</p>
 
       <Link to={`/workout/${id}`}>
 
