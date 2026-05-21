@@ -18,53 +18,50 @@ function WorkoutSession() {
 
   const [exerciseIndex, setExerciseIndex] = useState(0)
 
-  const [timeLeft, setTimeLeft] = useState(10)
+  const [timeLeft, setTimeLeft] = useState(session.exerciseTime)
 
   const [completed, setCompleted] = useState(false)
 
   useEffect(() => {
 
-    let timer
+    if (!started || completed || !session) return
 
-    if (started && !completed) {
+    const timer = setInterval(() => {
 
-      timer = setInterval(() => {
+      setTimeLeft((prev) => {
 
-        setTimeLeft((prev) => {
+        if (prev === 1) {
 
-          if (prev === 1) {
+          if (
+            exerciseIndex <
+            session.exercises.length - 1
+          ) {
 
-            if (
-              exerciseIndex <
-              session.exercises.length - 1
-            ) {
+            setExerciseIndex(
+              (prevIndex) => prevIndex + 1
+            )
 
-              setExerciseIndex(
-                (prevIndex) => prevIndex + 1
-              )
-
-              return 10
-            }
-
-            else {
-
-              clearInterval(timer)
-
-              setCompleted(true)
-
-              return 0
-            }
+            return session.exerciseTime
           }
 
-          return prev - 1
-        })
+          else {
 
-      }, 1000)
-    }
+            clearInterval(timer)
+
+            setCompleted(true)
+
+            return 0
+          }
+        }
+
+        return prev - 1
+      })
+
+    }, 1000)
 
     return () => clearInterval(timer)
 
-  }, [started, exerciseIndex, completed])
+  }, [started, exerciseIndex, completed, session])
 
   if (!session) {
     return <h1>Workout Not Found</h1>

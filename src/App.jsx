@@ -12,6 +12,10 @@ import Contact from "./pages/Contact"
 import Login from "./pages/Login"
 import WorkoutSession from "./pages/WorkoutSession"
 import ProgramDetails from "./pages/ProgramDetails"
+import Signup from "./pages/Signup"
+import PremiumDashboard from "./pages/PremiumDashboard"
+import PremiumProgram from "./pages/PremiumProgram"
+
 
 function App() {
   return (
@@ -40,6 +44,12 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/login" element={<Login />} />
+
+        <Route path="/signup" element={<Signup />} />
+
+        <Route path="/premium" element={<PremiumDashboard />} />
+
+        <Route path="/premium:id" element={<PremiumProgram />} />
 
       </Routes>
 

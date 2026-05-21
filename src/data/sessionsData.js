@@ -5,7 +5,7 @@ const sessions = [
 
     title: "5 Min Cardio",
 
-    duration: 10,
+    exerciseTime: 60,
 
     image:
       "https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg",
@@ -22,7 +22,7 @@ const sessions = [
 
     title: "10 Min Abs",
 
-    duration: 10,
+    exerciseTime: 120,
 
     image:
       "https://images.pexels.com/photos/4162487/pexels-photo-4162487.jpeg",
@@ -39,7 +39,7 @@ const sessions = [
 
     title: "7 Min Stretch",
 
-    duration: 10,
+    exerciseTime: 90,
 
     image:
       "https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg",

@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom"
 
-function ProgramCard({ id, title, price, image }) {
+function ProgramCard({ title, price, image }) {
+
   return (
 
     <div className="program-card">
 
-      <img src={image} alt={title} />
+      <img
+        src={image}
+        alt={title}
+      />
 
       <h2>{title}</h2>
 
       <p>{price}</p>
 
-      <Link to={`/program/${id}`}>
+      <Link to="/login">
 
         <button>
           Join Now
