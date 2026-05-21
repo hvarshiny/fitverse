@@ -2,7 +2,7 @@ import programs from "../data/programsData"
 
 import ProgramCard from "../components/ProgramCard"
 
-import "../styles/programs.css"
+import "../styles/Programs.css"
 
 function Programs() {
 
