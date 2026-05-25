@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { useEffect, useState } from "react"
 
@@ -9,19 +9,50 @@ function Navbar() {
   const [user, setUser] =
     useState("")
 
-  useEffect(() => {
+  const [role, setRole] =
+    useState("")
 
-    const loggedUser =
-      localStorage.getItem("user")
+  const navigate = useNavigate()
+useEffect(() => {
 
-    if (loggedUser) {
+  const loggedUser =
+    localStorage.getItem("user")
 
-      setUser(loggedUser)
+  const userRole =
+    localStorage.getItem("role")
 
-    }
+  const guestName =
+    localStorage.getItem("guestName")
 
-  }, [])
+  if (loggedUser) {
 
+    setUser(loggedUser)
+
+  }
+
+  else if (
+    userRole === "guest"
+  ) {
+
+    setUser(guestName)
+
+  }
+
+  setRole(userRole)
+
+}, [window.location.pathname])
+
+  const handleLogout = () => {
+
+  localStorage.clear()
+
+  setUser("")
+
+  setRole("")
+
+  navigate("/")
+
+}
   return (
 
     <nav className="navbar">
@@ -44,6 +75,14 @@ function Navbar() {
 
             </div>
 
+          ) : role === "guest" ? (
+
+            <div className="profile-box">
+
+              Guest User
+
+            </div>
+
           ) : (
 
             <Link to="/login">
@@ -55,6 +94,21 @@ function Navbar() {
           )}
 
         </li>
+
+        {(user || role === "guest") && (
+
+          <li>
+
+            <button
+              className="logout-btn"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+
+          </li>
+
+        )}
 
         <li>
 

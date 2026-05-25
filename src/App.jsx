@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
@@ -31,9 +32,11 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
 
-        <Route path="/programs" element={<Programs />} />
+        <Route path = "/home" element={<Home />} />
+
+        <Route path="/programs" element = {<Programs />} />
 
         <Route path="/sessions" element={<QuickSessions />} />
 

@@ -1,22 +1,31 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function ProgramCard({
 
   id,
   title,
-  price,
+  goal,
   image,
 
 }) {
 
+  const navigate = useNavigate()
+
   const handleJoinNow = () => {
 
-    localStorage.setItem(
-      "selectedProgram",
-      id
-    )
+  const role =
+    localStorage.getItem("role")
+
+  if (role === "guest") {
+
+    navigate("/login")
+
+    return
   }
 
+  navigate(`/premium/${id}`)
+
+}
   return (
 
     <div className="program-card">
@@ -28,15 +37,11 @@ function ProgramCard({
 
       <h2>{title}</h2>
 
-      <p>{price}</p>
+      <p>{goal}</p>
 
-      <Link to="/login">
-
-        <button onClick={handleJoinNow}>
-          Join Now
-        </button>
-
-      </Link>
+      <button onClick={handleJoinNow}>
+        Join Now
+      </button>
 
     </div>
   )

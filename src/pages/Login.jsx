@@ -14,52 +14,109 @@ function Login() {
   const [password, setPassword] =
     useState("")
 
+  const [showGuestForm, setShowGuestForm] =
+    useState(false)
+
+  const [guestName, setGuestName] =
+    useState("")
+
+  const [guestAge, setGuestAge] =
+    useState("")
+
+  const [guestGoal, setGuestGoal] =
+    useState("")
+
   const handleLogin = (e) => {
 
     e.preventDefault()
 
-    if (!email || !password) {
+    const validEmail =
+      "varsh@gmail.com"
+
+    const validPassword =
+      "1234"
+
+    if (
+      email === validEmail &&
+      password === validPassword
+    ) {
+
+      localStorage.clear()
+
+      localStorage.setItem(
+        "user",
+        email
+      )
+
+      localStorage.setItem(
+        "isLoggedIn",
+        "true"
+      )
+
+      localStorage.setItem(
+        "role",
+        "user"
+      )
+
+      window.dispatchEvent(
+        new Event("storage")
+      )
 
       alert(
-        "Please fill all fields"
+        "Login Successful ✅"
       )
 
-      return
-    }
-
-    localStorage.setItem(
-      "user",
-      email
-    )
-
-    localStorage.setItem(
-      "isLoggedIn",
-      true
-    )
-
-    alert(
-      "Login Successful ✅"
-    )
-
-    const selectedProgram =
-      localStorage.getItem(
-        "selectedProgram"
-      )
-
-    if (selectedProgram) {
-
-      navigate(
-        `/premium/${selectedProgram}`
-      )
+      navigate("/home")
 
     } else {
 
-      navigate("/")
+      alert(
+        "Invalid Email or Password ❌"
+      )
 
     }
   }
 
   const handleGuestLogin = () => {
+
+    if (
+      !guestName ||
+      !guestAge ||
+      !guestGoal
+    ) {
+
+      alert(
+        "Please fill all guest details"
+      )
+
+      return
+    }
+
+    localStorage.clear()
+
+    localStorage.setItem(
+      "role",
+      "guest"
+    )
+
+    localStorage.setItem(
+      "guestName",
+      guestName
+    )
+
+    localStorage.setItem(
+      "guestAge",
+      guestAge
+    )
+
+    localStorage.setItem(
+      "guestGoal",
+      guestGoal
+    )
+
+    window.dispatchEvent(
+      new Event("storage")
+    )
 
     navigate("/sessions")
   }
@@ -67,6 +124,7 @@ function Login() {
   const handleSignup = () => {
 
     navigate("/signup")
+
   }
 
   return (
@@ -107,10 +165,53 @@ function Login() {
 
         <button
           className="guest-btn"
-          onClick={handleGuestLogin}
+          onClick={() =>
+            setShowGuestForm(true)
+          }
         >
           Continue as Guest
         </button>
+
+        {showGuestForm && (
+
+          <div className="guest-form">
+
+            <input
+              type="text"
+              placeholder="Enter Name"
+              value={guestName}
+              onChange={(e) =>
+                setGuestName(e.target.value)
+              }
+            />
+
+            <input
+              type="number"
+              placeholder="Enter Age"
+              value={guestAge}
+              onChange={(e) =>
+                setGuestAge(e.target.value)
+              }
+            />
+
+            <input
+              type="text"
+              placeholder="Fitness Goal"
+              value={guestGoal}
+              onChange={(e) =>
+                setGuestGoal(e.target.value)
+              }
+            />
+
+            <button
+              onClick={handleGuestLogin}
+            >
+              Start Quick Sessions
+            </button>
+
+          </div>
+
+        )}
 
         <button
           className="signup-btn"

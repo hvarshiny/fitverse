@@ -3,9 +3,9 @@ const programs = [
   {
     id: 1,
 
-    title: "Weight Loss",
+    title: "Slim Active",
 
-    price: "Rs.449/month",
+    goal: "Weight Loss",
 
     image:
       "https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg",
@@ -25,9 +25,9 @@ const programs = [
   {
     id: 2,
 
-    title: "Muscle Gain",
+    title: "Muscle Max",
 
-    price: "Rs.499/month",
+    goal: "Muscle Gain",
 
     image:
       "https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg",
@@ -47,9 +47,9 @@ const programs = [
   {
     id: 3,
 
-    title: "Strength Training",
+    title: "Iron Strength",
 
-    price: "Rs.599/month",
+    goal: "Strength Training",
 
     image:
       "https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg",
@@ -69,9 +69,9 @@ const programs = [
   {
     id: 4,
 
-    title: "Fat Burn",
+    title: "Burn X",
 
-    price: "Rs.499/month",
+    goal: "Fat Burn",
 
     image:
       "https://images.pexels.com/photos/4498606/pexels-photo-4498606.jpeg",

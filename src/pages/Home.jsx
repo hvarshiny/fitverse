@@ -1,7 +1,11 @@
 import "../styles/Home.css"
+import {useNavigate} from "react-router-dom"
 
 function Home() {
+  const navigate = useNavigate()
   return (
+
+    
     <div className="home-page">
 
       <div className="home-container">
@@ -19,10 +23,14 @@ function Home() {
             and quick training sessions.
           </p>
 
-          <button className="home-btn">
-            Get Started
-          </button>
-
+          <button
+  className="home-btn"
+  onClick={() =>
+    navigate("/programs")
+  }
+>
+  Get Started
+</button>
         </div>
 
       </div>
