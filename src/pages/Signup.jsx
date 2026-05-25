@@ -12,7 +12,9 @@ function Signup() {
 
     alert("Account Created Successfully 🎉")
 
-    navigate("/programs")
+    const selectedProgram = localStorage.getItem("selectedProgram")
+
+    navigate(`/premium/${selectedProgram}`)
   }
 
   return (

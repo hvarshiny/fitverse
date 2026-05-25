@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import { useNavigate } from "react-router-dom"
 
 import "../styles/Login.css"
@@ -6,20 +8,65 @@ function Login() {
 
   const navigate = useNavigate()
 
+  const [email, setEmail] =
+    useState("")
+
+  const [password, setPassword] =
+    useState("")
+
   const handleLogin = (e) => {
 
     e.preventDefault()
 
-    alert("Premium Login Successful ✅")
+    if (!email || !password) {
 
-    navigate("/premium")
+      alert(
+        "Please fill all fields"
+      )
+
+      return
+    }
+
+    localStorage.setItem(
+      "user",
+      email
+    )
+
+    localStorage.setItem(
+      "isLoggedIn",
+      true
+    )
+
+    alert(
+      "Login Successful ✅"
+    )
+
+    const selectedProgram =
+      localStorage.getItem(
+        "selectedProgram"
+      )
+
+    if (selectedProgram) {
+
+      navigate(
+        `/premium/${selectedProgram}`
+      )
+
+    } else {
+
+      navigate("/")
+
+    }
   }
 
-  const handleGuest = () => {
-
-    alert("Continuing As Guest")
+  const handleGuestLogin = () => {
 
     navigate("/sessions")
+  }
+
+  const handleSignup = () => {
+
+    navigate("/signup")
   }
 
   return (
@@ -29,31 +76,27 @@ function Login() {
       <div className="login-container">
 
         <h1>
-          Premium Access
+          Login
         </h1>
 
-        <p className="login-subtext">
-
-          Unlock premium programs and
-          unlimited workout sessions.
-
-        </p>
-
-        <form
-          className="login-form"
-          onSubmit={handleLogin}
-        >
+        <form onSubmit={handleLogin}>
 
           <input
             type="email"
             placeholder="Enter Email"
-            required
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
           />
 
           <input
             type="password"
             placeholder="Enter Password"
-            required
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
           />
 
           <button type="submit">
@@ -62,20 +105,19 @@ function Login() {
 
         </form>
 
-        <div className="extra-options">
+        <button
+          className="guest-btn"
+          onClick={handleGuestLogin}
+        >
+          Continue as Guest
+        </button>
 
-          <button
-            className="guest-btn"
-            onClick={handleGuest}
-          >
-            Continue As Guest
-          </button>
-
-          <p onClick={() => navigate("/signup")}>
-            New User? Sign Up Now
-          </p>
-
-        </div>
+        <button
+          className="signup-btn"
+          onClick={handleSignup}
+        >
+          New User Sign Up
+        </button>
 
       </div>
 

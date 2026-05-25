@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom"
 
-function ProgramCard({ title, price, image }) {
+function ProgramCard({
+
+  id,
+  title,
+  price,
+  image,
+
+}) {
+
+  const handleJoinNow = () => {
+
+    localStorage.setItem(
+      "selectedProgram",
+      id
+    )
+  }
 
   return (
 
@@ -17,7 +32,7 @@ function ProgramCard({ title, price, image }) {
 
       <Link to="/login">
 
-        <button>
+        <button onClick={handleJoinNow}>
           Join Now
         </button>
 

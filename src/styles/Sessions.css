@@ -14,6 +14,14 @@
   gap: 30px;
 }
 
+.sessions-swiper {
+  padding: 20px 10px 60px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
 .session-card{
   background-color: #111;
 
